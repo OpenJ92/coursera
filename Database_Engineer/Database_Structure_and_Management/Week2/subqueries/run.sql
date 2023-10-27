@@ -1,3 +1,4 @@
+#!/usr/bin/mysql
 
 source on_enter.sql;
 

@@ -1,3 +1,5 @@
+#!/usr/bin/mysql
+
 create database if not exists littlelemon_db;
 use littlelemon_db;
 
