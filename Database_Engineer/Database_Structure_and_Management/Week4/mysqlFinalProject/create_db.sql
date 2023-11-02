@@ -1,5 +1,5 @@
 delimiter //
-create procedure if not exists mysql.create_db()
+create procedure if not exists Little_Lemon.create_db()
 begin
 	create database if not exists Little_Lemon;
 	CREATE TABLE if not exists  Little_Lemon.Customers

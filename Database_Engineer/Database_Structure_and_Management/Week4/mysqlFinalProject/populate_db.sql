@@ -1,7 +1,7 @@
 delimiter //
-create procedure if not exists mysql.populate_db()
+create procedure if not exists Little_Lemon.populate_db()
 begin
-	replace INTO Customers
+	replace INTO Little_Lemon.Customers
 	(CustomerID, FullName, PhoneNumber)
 	VALUES
 	(1, "Vanessa McCarthy", 0757536378),
@@ -15,7 +15,7 @@ begin
 	(9, "Mike Edwards", 0757236375),
 	(10, "Karl Pederson", 0757936374);
 
-	replace INTO Bookings 
+	replace INTO Little_Lemon.Bookings 
 	(BookingID, BookingDate, TableNumber, NumberOfGuests, CustomerID) 
 	VALUES 
 	(10, '2021-11-10', 7, 5, 1),  
@@ -31,7 +31,7 @@ begin
 	(20, '2021-11-14', 5, 2, 3),  
 	(21, '2021-11-14', 3, 2, 4);
 
-	replace INTO Courses
+	replace INTO Little_Lemon.Courses
 	(CourseName, Cost)
 	VALUES
 	("Greek salad", 15.50),
