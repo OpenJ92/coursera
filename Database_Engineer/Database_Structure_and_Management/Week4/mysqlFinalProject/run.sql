@@ -85,5 +85,5 @@ call GetBookingsData('2021-11-13');
 -- Task 10: Use the String function
 -- Create a SQL SELECT query using appropriate MySQL string function to list "Booking Details" including booking ID, 
 -- booking date and number of guests. The data must be listed in the same format as the following example:
-select concat("ID: ", BookingID, ", Date:", BookingDate, ", Number of guests:", NumberOfGuests) as 'Booking Details'
+select concat("ID: ", BookingID, ", Date: ", BookingDate, ", Number of guests: ", NumberOfGuests) as 'Booking Details'
 from Bookings;
