@@ -1,3 +1,4 @@
+-- procedures to declare and populate Lucky Shrub database
 delimiter // 
 create procedure if not exists mysql.create_Lucky_Shrub() 
 begin
@@ -27,3 +28,4 @@ begin
             (8, "Cl1", "P1", 15, 150);
 end//
 delimiter ;
+
