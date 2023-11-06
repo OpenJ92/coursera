@@ -6,4 +6,5 @@ create table Lucky_Shrub.Orders
        	Quantity INT,
        	Cost DECIMAL(6,2), 
 	DateOrdered DATE
+
 ); 
