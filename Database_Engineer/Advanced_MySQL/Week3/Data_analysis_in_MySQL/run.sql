@@ -70,6 +70,7 @@ inner join Products
 on Orders.ProductID = Products.ProductID
 inner join Addresses
 on Clients.AddressID = Addresses.AddressID
+where year (Orders.Date) = 2021 or year (Orders.Date) = 2022
 order by Orders.Date;
 
 -- Task 3: Lucky Shrub needs to analyze the sales performance of their Patio slates product in the 
