@@ -44,3 +44,15 @@ begin
 end //
 
 delimiter ;
+
+-- Task 3:
+-- Lucky Shrub need to automate the orders process in their database. The database must insert a new record of
+-- data in response to the insertion of a new order in the Orders table. This new record of data must contain
+-- a new ID and the current date and time.
+
+-- You can help Lucky Shrub by creating a trigger called UpdateAudit. This trigger must be invoked automatically
+-- AFTER a new order is inserted into the Orders table.
+
+create trigger if not exists UpdateAudit
+after insert on Orders
+for each row insert into Audit (OrderDateTime) values (now());
