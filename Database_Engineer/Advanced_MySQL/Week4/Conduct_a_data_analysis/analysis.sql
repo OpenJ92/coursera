@@ -88,3 +88,32 @@ begin
 end //
 
 delimiter ;
+
+-- Task 5: Lucky Shrub need to find out what quantities of wood panels they are selling. The wood 
+-- panels product has a Product ID of P2. The following query returns the total quantity of this 
+-- product as sold in the years 2020, 2021 and 2022. Your task is to optimize this query by 
+-- recreating it as a common table expression (CTE).
+
+delimiter //
+
+create procedure if not exists TotalSumProduct2020to2022(pid varchar(10))
+begin
+	with quantity2020 as
+	(
+		SELECT CONCAT(SUM(Cost), " (2020)") as "Total Sum Product 2020 - 2022"
+		FROM Orders WHERE YEAR (Date) = 2020 AND ProductID = pid 
+	),   quantity2021 as
+	(
+		SELECT CONCAT(SUM(Cost), "(2021)") 
+		FROM Orders WHERE YEAR (Date) = 2021 AND ProductID = pid
+	),   quantity2022 as
+	(
+		SELECT CONCAT(SUM(Cost), "(2022)") 
+		FROM Orders WHERE YEAR (Date) = 2022 AND ProductID = pid 
+	)  	table quantity2020 
+	  union table quantity2021
+	  union table quantity2022;
+end //
+
+delimiter ;
+

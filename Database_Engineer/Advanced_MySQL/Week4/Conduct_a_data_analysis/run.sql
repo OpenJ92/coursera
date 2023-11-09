@@ -20,5 +20,8 @@ values
     (100, "CL1", "P1", 10, 100.0, '2020-01-01');
 select * from Audit;
 
--- Task 4 (See: Analysis) make this a procedure?
+-- Task 4 (See: Analysis)
 call GetPersonsAddresses();
+
+-- Task 5 (See: Analysis)
+call TotalSumProduct2020to2022("P2");
