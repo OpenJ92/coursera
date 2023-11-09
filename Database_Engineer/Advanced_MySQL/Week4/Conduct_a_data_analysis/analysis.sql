@@ -56,3 +56,35 @@ delimiter ;
 create trigger if not exists UpdateAudit
 after insert on Orders
 for each row insert into Audit (OrderDateTime) values (now());
+
+-- Task 4: Lucky Shrub need location data for their clients and employees. To help them out, create an optimized 
+-- query that outputs the following data:
+--
+-- 	The full name of all clients and employees from the Clients and Employees tables in the Lucky 
+-- 		Shrub database.
+--
+-- 	The address of each person from the Addresses table.
+
+delimiter //
+
+create procedure if not exists GetPersonsAddresses()
+begin
+	with address_clients as 
+	(
+		select FullName, County, Street
+		from Addresses 
+		inner join Clients
+		on Addresses.AddressID = Clients.AddressID
+	),    address_employees as
+	(
+		select FullName, County, Street
+		from Addresses 
+		inner join Employees
+		on Addresses.AddressID = Employees.AddressID
+	) table address_clients
+	  union
+	  table address_employees
+	  order by Street;
+end //
+
+delimiter ;

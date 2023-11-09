@@ -43,7 +43,7 @@ VALUES
 INSERT INTO Addresses
 	(AddressID, Street, County) 
 VALUES   
-	(1, ",291 Oak Wood Avenue", "Graham County"),   
+	(1, "291 Oak Wood Avenue", "Graham County"),   
 	(2, "724 Greenway Drive", "Pinal County"),   
 	(3, "102 Sycamore Lane", "Santa Cruz County"),   
 	(4, "125 Roselawn Close", "Gila County"),   
