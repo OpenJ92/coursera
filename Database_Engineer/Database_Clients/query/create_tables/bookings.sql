@@ -1,0 +1,9 @@
+CREATE TABLE Bookings (
+BookingID INT AUTO_INCREMENT,
+TableNo INT,
+GuestFirstName VARCHAR(100) NOT NULL,
+GuestLastName VARCHAR(100) NOT NULL,
+BookingSlot TIME NOT NULL,
+EmployeeID INT,
+PRIMARY KEY (BookingID)
+);
