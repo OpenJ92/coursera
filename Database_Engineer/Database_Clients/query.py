@@ -5,21 +5,19 @@ class __QUERY__(ABC):
     def query():
         pass
 
-class QueryFromFile(__Query__):
-    def __init__(self, file):
-        self.file = file
+class Query(__Query__):
+    @classmethod
+    def FromFile(cls, file):
+        with open(file, 'r') as q:
+            query = q.read()
+        return cls(query)
 
-    def query(self):
-        with open(self.file, 'r') as q:
-            sql_query = q.read()
-        return sql_query
+    @classmethod
+    def FromString(cls, string):
+        return cls(string)
 
-class QueryFromString(__Query__):
-    def __init__(self, string):
-        self.string
-
-    def query(self):
-        return self.string
+    def __init__(self, query):
+        self.query = query
 
 
 class __CONNECTION__(ABC):
