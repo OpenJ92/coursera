@@ -20,15 +20,6 @@ class Query(__Query__):
         self.query = query
 
 
-class __CONNECTION__(ABC):
-    @abstractmethod
-    def __enter__(self):
-        pass
-
-    @abstractmethod
-    def __exit__(self):
-        pass
-
 # Next we want to make a class that takes a __Query__ and a 
 # __Connection__ type form and carries out the __Query__ action
 # over the __Connection__. We may want to have secondary set of 
