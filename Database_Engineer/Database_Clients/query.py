@@ -13,9 +13,12 @@ class Query(PROCESSABLE):
 
     def __init__(self, query):
         self.query = query
+        self.results = None
 
     def __run__(self, cursor):
         cursor.execute(self.query)
+        self.result = cursor.fetchall()
+        cursor.close()
 
 
 # Next we want to make a class that takes a __Query__ and a 
