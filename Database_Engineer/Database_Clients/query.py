@@ -1,11 +1,6 @@
-from abc import ABC, property, abstractmethod
+from process import PROCESSABLE
 
-class __QUERY__(ABC):
-    @abstractmethod
-    def query():
-        pass
-
-class Query(__Query__):
+class Query(PROCESSABLE):
     @classmethod
     def FromFile(cls, file):
         with open(file, 'r') as q:
@@ -19,6 +14,9 @@ class Query(__Query__):
     def __init__(self, query):
         self.query = query
 
+    def __run__(self, cursor):
+        cursor.execute(self.query)
+
 
 # Next we want to make a class that takes a __Query__ and a 
 # __Connection__ type form and carries out the __Query__ action
@@ -27,7 +25,7 @@ class Query(__Query__):
 # to say that they communicate to the Process Class that they
 # need to have their results stored somehow
 
-# __PROCESS__(__CONNECTION__, [__QUERY__]) 
+# __PROCESS__(__CONNECTION__, [__QUERY__ | __PROCEDURE__]) 
 # A Process should act out what we've been doing in the lessons
 # so far, making a connection to the db and executing the queries.
 #
