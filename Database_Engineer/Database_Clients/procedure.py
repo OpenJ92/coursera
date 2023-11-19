@@ -30,6 +30,9 @@ class Procedure(ABC):
 ## 'Database'. Process then is generic over Databases
 ## Notice line 15 in process.py. There's no gauruntee 
 ## that connection obj has cursor property/method. 
+
+## Is this really worth working on? Just finish the
+## problem...
 class MySQLProcedure(PROCESSABLE, Procedure):
     def __init__(self, name, *args):
         Procedure.__init__(name, args)
