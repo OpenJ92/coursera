@@ -1,6 +1,6 @@
 from abc import ABC, property, abstractmethod
 
-class PROCESSABLE(ABC):
+class Processable(ABC):
     @abstractmethod
     def __run__(self):
         pass

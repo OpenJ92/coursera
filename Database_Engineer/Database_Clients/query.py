@@ -1,6 +1,6 @@
 from abc import ABC, property, abstractmethod
 
-from process import PROCESSABLE
+from process import Processable
 
 class Query(ABC):
     @classmethod
@@ -18,7 +18,7 @@ class Query(ABC):
         self.results = None
 
 
-class MySQLQuery(PROCESSABLE, Query)
+class MySQLQuery(MySQL, Processable, Query)
     def __init__(self, query):
         Query.__init__(query)
 
@@ -27,7 +27,7 @@ class MySQLQuery(PROCESSABLE, Query)
         self.result = cursor.fetchall()
         cursor.close()
 
-class PSQLQuery(PROCESSABLE, Query):
+class PSQLQuery(PSQL, Processable, Query):
     pass
 
 # Next we want to make a class that takes a __Query__ and a 

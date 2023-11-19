@@ -1,6 +1,6 @@
 from abc import ABC, property, abstractmethod
 
-from process import PROCESSABLE
+from process import Processable
 
 class Procedure(ABC):
     def __init__(self, name, *args):
@@ -33,7 +33,7 @@ class Procedure(ABC):
 
 ## Is this really worth working on? Just finish the
 ## problem...
-class MySQLProcedure(PROCESSABLE, Procedure):
+class MySQLProcedure(MySQL, Processable, Procedure):
     def __init__(self, name, *args):
         Procedure.__init__(name, args)
 
