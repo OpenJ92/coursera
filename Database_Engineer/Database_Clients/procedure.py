@@ -23,6 +23,13 @@ class Procedure(ABC):
 ## methods used here? ie. stored_results, fetchall
 ## and callproc? Cursors should be database specific
 ## as Procedures and Queries are... ? 
+
+## The Procedure, Query, Connection and Cursor should
+## all subclass MySQL, even if it's just symbolic. Then
+## in Process, we can verify they're all of the same 
+## 'Database'. Process then is generic over Databases
+## Notice line 15 in process.py. There's no gauruntee 
+## that connection obj has cursor property/method. 
 class MySQLProcedure(PROCESSABLE, Procedure):
     def __init__(self, name, *args):
         Procedure.__init__(name, args)
