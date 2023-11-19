@@ -1,6 +1,8 @@
+from abc import ABC, property, abstractmethod
+
 from process import PROCESSABLE
 
-class Query(PROCESSABLE):
+class Query(ABC):
     @classmethod
     def FromFile(cls, file):
         with open(file, 'r') as q:
@@ -15,11 +17,18 @@ class Query(PROCESSABLE):
         self.query = query
         self.results = None
 
+
+class MySQLQuery(PROCESSABLE, Query)
+    def __init__(self, query):
+        Query.__init__(query)
+
     def __run__(self, cursor):
         cursor.execute(self.query)
         self.result = cursor.fetchall()
         cursor.close()
 
+class PSQLQuery(PROCESSABLE, Query):
+    pass
 
 # Next we want to make a class that takes a __Query__ and a 
 # __Connection__ type form and carries out the __Query__ action

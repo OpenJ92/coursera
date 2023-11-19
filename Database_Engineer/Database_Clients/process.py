@@ -15,4 +15,3 @@ class Process:
             cursor = connection.cursor
             for action in actions:
                 action.__run__(cursor)
-            connection.commit()

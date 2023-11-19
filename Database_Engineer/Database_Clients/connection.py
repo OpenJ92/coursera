@@ -11,6 +11,7 @@ class __CONNECTION__(ABC):
 
     @abstractmethod
     def __exit__(self):
+        # self.commit()? 
         pass
 
     @abstractmethod
