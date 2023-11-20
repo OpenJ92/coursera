@@ -19,12 +19,17 @@ class Query(__Query__):
     def __init__(self, query):
         self.query = query
 
+    @abstractmethod
+    def execute(self, cursor):
+        pass
+
 
 class __CONNECTION__(ABC):
     @abstractmethod
     def __enter__(self):
         pass
 
+<<<<<<< Updated upstream
     @abstractmethod
     def __exit__(self):
         pass
@@ -45,3 +50,16 @@ class __CONNECTION__(ABC):
 #   ConstructDatabaseProcess(mysql.connection, construction_queries)
 #   PopulateDatabaseProcess(myql.connection, population_quereis)
 #   AnalyzeDatabase....
+=======
+    def execute(self, cursor):
+        return cursor.execute(self.query)
+
+    def __run__(self, cursor):
+        self.execute(cursor)
+        self.result = cursor.fetchall()
+        cursor.close()
+
+class PSQLQuery(PSQL, Processable, Query):
+    pass
+
+>>>>>>> Stashed changes
