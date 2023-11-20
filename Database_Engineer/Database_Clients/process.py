@@ -6,12 +6,14 @@ class Processable(ABC):
         pass
 
 class Process:
-    def __init__(self, connection: __CONNECTION__, actions: PROCESSABLE):
-        self.connection = connection
+    def __init__(self, connector: __CONNECTION__, actions: PROCESSABLE):
+        self.connector = connector
         self.actions = actions
 
     def run(self):
-        with self.connection.get_connection() as connection:
-            cursor = connection.cursor
+        with self.connector as connector:
+            connection = connector.get_connection()
+            cursor     = connection.cursor()
+
             for action in actions:
                 action.__run__(cursor)
