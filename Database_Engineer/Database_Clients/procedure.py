@@ -9,6 +9,7 @@ class Procedure(ABC):
         self.results = []
 
     @abstractmethod
+
     def call(self, cursor):
         pass
 
@@ -21,10 +22,10 @@ class MySQLProcedure(MySQL, Processable, Procedure):
 
     def __run__(self, cursor):
         self.call(cursor)
+
         for result in cursor.stored_results()
             self.result.append(cursor.fetchall())
         cursor.close()
-
 
 class PSQLProcedure(PSQL, Processable, Procedure):
     pass

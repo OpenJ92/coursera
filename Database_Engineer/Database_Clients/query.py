@@ -1,11 +1,8 @@
 from abc import ABC, property, abstractmethod
 
-class __QUERY__(ABC):
-    @abstractmethod
-    def query():
-        pass
+from process import Processable
 
-class Query(__Query__):
+class Query(ABC):
     @classmethod
     def FromFile(cls, file):
         with open(file, 'r') as q:
@@ -18,48 +15,26 @@ class Query(__Query__):
 
     def __init__(self, query):
         self.query = query
+        self.results = None
 
     @abstractmethod
     def execute(self, cursor):
         pass
 
 
-class __CONNECTION__(ABC):
-    @abstractmethod
-    def __enter__(self):
-        pass
-
-<<<<<<< Updated upstream
-    @abstractmethod
-    def __exit__(self):
-        pass
-
-# Next we want to make a class that takes a __Query__ and a 
-# __Connection__ type form and carries out the __Query__ action
-# over the __Connection__. We may want to have secondary set of 
-# query classes which store thier results within class. That is
-# to say that they communicate to the Process Class that they
-# need to have their results stored somehow
-
-# __PROCESS__(__CONNECTION__, [__QUERY__]) 
-# A Process should act out what we've been doing in the lessons
-# so far, making a connection to the db and executing the queries.
-#
-# One might imagine them being written as:
-#
-#   ConstructDatabaseProcess(mysql.connection, construction_queries)
-#   PopulateDatabaseProcess(myql.connection, population_quereis)
-#   AnalyzeDatabase....
-=======
+class MySQLQuery(MySQL, Processable, Query)
+    def __init__(self, query):
+        Query.__init__(query)
+    
     def execute(self, cursor):
         return cursor.execute(self.query)
+
 
     def __run__(self, cursor):
         self.execute(cursor)
         self.result = cursor.fetchall()
         cursor.close()
 
+
 class PSQLQuery(PSQL, Processable, Query):
     pass
-
->>>>>>> Stashed changes

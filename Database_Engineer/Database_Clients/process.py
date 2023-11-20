@@ -14,5 +14,6 @@ class Process:
         with self.connector as connector:
             connection = connector.get_connection()
             cursor     = connection.cursor()
+
             for action in actions:
                 action.__run__(cursor)
