@@ -1,6 +1,6 @@
 from abc import ABC, property, abstractmethod
 
-class __CONNECTION__(ABC):
+class Connector(ABC):
     @abstractmethod
     def __enter__(self):
         pass
@@ -14,10 +14,20 @@ class __CONNECTION__(ABC):
     def get_connection(self):
         pass
 
-    @abstractmethod
-    def get_connection(self):
-
 
     @abstractmethod
+    def get_cursor(self):
+        pass
+
+class MySQLConnector(MySQL, Connector):
+    def __init__(self, configuration):
+        self.configuration = configuration
+
+    def __enter__(self):
+        pass
+
+    def __exit__(self):
+        pass
+
     def get_cursor(self):
         pass

@@ -25,10 +25,9 @@ class Query(ABC):
 class MySQLQuery(MySQL, Processable, Query)
     def __init__(self, query):
         Query.__init__(query)
-    
+
     def execute(self, cursor):
         return cursor.execute(self.query)
-
 
     def __run__(self, cursor):
         self.execute(cursor)

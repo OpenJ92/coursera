@@ -9,7 +9,6 @@ class Procedure(ABC):
         self.results = []
 
     @abstractmethod
-
     def call(self, cursor):
         pass
 
